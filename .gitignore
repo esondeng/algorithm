@@ -1,0 +1,37 @@
+### Java template
+*.class
+
+# Package Files #
+*.jar
+
+hs_err_pid*
+
+# IntelliJ
+.out/
+.idea
+*.iml
+logs/
+.idea/
+*/*.iml
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# sbt specific
+.cache
+.history
+.lib/
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.DS_Store
+
+node_modules/
+npm-debug.log
+
+*.log
+
+
