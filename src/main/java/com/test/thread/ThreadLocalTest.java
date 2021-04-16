@@ -40,12 +40,13 @@ public class ThreadLocalTest {
 
         ThreadLocal<Stack<String>> threadLocal = new ThreadLocal<>();
         threadLocal.set(stack);
+        System.out.println(stack);
 
         InheritableThreadLocal<Stack<String>> inheritableThreadLocal = new InheritableThreadLocal<>();
         inheritableThreadLocal.set(stack);
 
         CompletionService<Void> completionService = new ExecutorCompletionService<>(executor);
-        completionService.submit(new TheadTest(threadLocal, inheritableThreadLocal), null);
+        completionService.submit(new TheadTest(stack, threadLocal, inheritableThreadLocal), null);
 
         try {
             completionService.take();
@@ -60,18 +61,20 @@ public class ThreadLocalTest {
 
 
     public static class TheadTest implements Runnable {
+        Stack<String> stack;
         ThreadLocal<Stack<String>> threadLocal;
         InheritableThreadLocal<Stack<String>> inheritableThreadLocal;
 
-        public TheadTest(ThreadLocal<Stack<String>> threadLocal, InheritableThreadLocal<Stack<String>> inheritableThreadLocal) {
+        public TheadTest(Stack<String> stack, ThreadLocal<Stack<String>> threadLocal, InheritableThreadLocal<Stack<String>> inheritableThreadLocal) {
+            this.stack = stack;
             this.threadLocal = threadLocal;
             this.inheritableThreadLocal = inheritableThreadLocal;
         }
 
         @Override
         public void run() {
-            System.out.println(threadLocal.get());
-            System.out.println(inheritableThreadLocal.get().push("234"));
+            // 说明直接使用的value， 因此不能使用InheritableThreadLocal来作为链路追踪的手段
+            System.out.println(stack == inheritableThreadLocal.get());
 
         }
     }
