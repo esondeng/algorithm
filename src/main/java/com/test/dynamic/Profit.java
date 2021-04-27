@@ -53,8 +53,8 @@ public class Profit {
             // i卖的话，i-1可能是买,i-2,i-3..都可能是买
             if (i >= 2) {
                 int max = 0;
-                for (int j = i; j >= 2; j--) {
-                    max = Math.max(max, dp[j - 1][0] + prices[j - 1] - prices[j - 2]);
+                for (int row = 1; row < i; row++) {
+                    max = Math.max(max, dp[row][0] + prices[i - 1] - prices[row - 1]);
                 }
                 dp[i][2] = max;
             }
