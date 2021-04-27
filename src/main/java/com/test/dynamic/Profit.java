@@ -27,7 +27,7 @@ public class Profit {
 
     public static void main(String[] args) {
         int[][] inputs = {
-                {1, 2, 3, 7}
+                {1, 2, 3, 9, 9, 8, 10, 11}
         };
         for (int[] input : inputs) {
             System.out.println("input = " + Arrays.toString(input));
