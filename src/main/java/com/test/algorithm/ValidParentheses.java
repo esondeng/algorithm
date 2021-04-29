@@ -29,11 +29,11 @@ public class ValidParentheses {
                     return false;
                 }
                 Character character = stack.pop();
-                boolean isNotValid = (character == '(' && (tmp == '}' || tmp == ']'))
-                        || (character == '[' && (tmp == '}' || tmp == ')'))
-                        || (character == '{' && (tmp == ')' || tmp == ']'));
+                boolean isValid = (character == '(' && tmp == ')')
+                        || (character == '[' && tmp == ']')
+                        || (character == '{' && tmp == '}');
 
-                if (isNotValid) {
+                if (!isValid) {
                     return false;
                 }
             }

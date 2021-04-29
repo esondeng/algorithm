@@ -1,6 +1,7 @@
 package com.test.algorithm;
 
-import java.util.BitSet;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author dengxiaolin
@@ -52,19 +53,7 @@ public class Test {
     }
 
     public static void main(String[] args) {
-//        Item item = new Item(1);
-//
-//        print(item);
-//        item = insert(0, item);
-//        print(item);
-        BitSet bidSet = new BitSet();
-        bidSet.set(0);
-        System.out.println(bidSet.get(0));
 
-        bidSet.set(0);
-        System.out.println(bidSet.get(0));
-
-        System.out.println(1L << 3);
     }
 
     private static class Item {
