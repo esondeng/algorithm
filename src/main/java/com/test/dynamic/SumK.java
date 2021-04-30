@@ -1,4 +1,4 @@
-package com.test.array;
+package com.test.dynamic;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +19,8 @@ import java.util.Map;
  * 1. 暴力法,n平方的时间复杂度
  * 2. 动态规划，下面我们来发现规律
  * pre[i] = pre[i−1] + nums[i]， pre[i]表示[0...i]的所有的和
- * 针对pre[j] + k == pre[i], 这个条件就表示 pre[j] 满足条件。 如果有个地方存储pre[j]的个数，用map可以存储，key是pre[j], value是pre[j]对应的
+ * 针对pre[j] + k == pre[i], 这个条件就表示 pre[j] 满足条件。
+ * 如果有个地方存储pre[j]的个数，用map可以存储，key是pre[j], value是pre[j]对应的
  * 满足条件的连续子序列个数
  *
  * @author dengxiaolin
@@ -56,12 +57,11 @@ public class SumK {
      * 动态规划
      */
     public static int subarraySum(int[] nums, int k) {
-        int count = 0;
-        int pre = 0;
-
         Map<Integer, Integer> mp = new HashMap<>(16);
         mp.put(0, 1);
 
+        int count = 0;
+        int pre = 0;
         for (int i = 0; i < nums.length; i++) {
             pre += nums[i];
             if (mp.containsKey(pre - k)) {

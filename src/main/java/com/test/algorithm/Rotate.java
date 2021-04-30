@@ -42,6 +42,13 @@ package com.test.algorithm;
  * *   [16, 7,10,11]
  * * ]
  * * </pre>
+ * <p>
+ * 思路：寻找中心点确认旋转的范围:
+ * int n = matrix.length;
+ * int rest = n % 2;
+ * int rowlimit = n / 2;
+ * int columnlimit = rest == 1 ? n / 2 + 1 : n / 2;
+ * 找出旋转规律
  *
  * @author dengxiaolin
  * @since 2020/11/27
@@ -57,13 +64,7 @@ public class Rotate {
 
         };
 
-        Rotate rotate = new Rotate();
-        int count = m.length / 2;
-        int end = m.length - 1;
-
-        for (int i = 0; i < count; i++) {
-            rotate.rotate(m, i, end - i);
-        }
+        rotate(m);
 
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[0].length; j++) {
@@ -74,19 +75,32 @@ public class Rotate {
 
     }
 
-    public void rotate(int[][] m, int start, int end) {
-        int tmp;
-        int high = m[start].length - 1;
-        for (int i = start; i < end; i++) {
-            tmp = m[start][i];
-            int second = m[i][high - start];
-            int third = m[high - start][high - i];
-            int forth = m[high - i][start];
+    public static void rotate(int[][] matrix) {
 
-            m[start][i] = forth;
-            m[high - i][start] = third;
-            m[high - start][high - i] = second;
-            m[i][high - start] = tmp;
+        if (matrix == null || matrix.length == 1) {
+            return;
         }
+
+        int n = matrix.length;
+        int rest = n % 2;
+
+        int rowLimit = n / 2;
+        int columnLimit = rest == 1 ? n / 2 + 1 : n / 2;
+
+        for (int i = 0; i < rowLimit; i++) {
+            for (int j = 0; j < columnLimit; j++) {
+                swap(matrix, i, j, n - 1);
+            }
+        }
+
+    }
+
+    private static void swap(int[][] matrix, int i, int j, int n) {
+        int temp = matrix[i][j];
+
+        matrix[i][j] = matrix[n - j][i];
+        matrix[n - j][i] = matrix[n - i][n - j];
+        matrix[n - i][n - j] = matrix[j][n - i];
+        matrix[j][n - i] = temp;
     }
 }

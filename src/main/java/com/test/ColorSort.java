@@ -19,6 +19,7 @@ import java.util.Arrays;
  * * Could you come up with a one-pass algorithm using only constant space?
  * <p>
  * 思路：双指针法，+ zeroIndex（0，需要放的位置），j是2只要放的位置
+ * 注意: 序号i是否能移动
  *
  * @author dengxiaolin
  * @since 2020/11/30
