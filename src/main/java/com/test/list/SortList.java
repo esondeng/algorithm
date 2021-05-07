@@ -41,6 +41,7 @@ public class SortList {
         ListNode slow = header;
         ListNode slowPre = null;
 
+        // 快慢指针发，拆分成两个
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
 

@@ -17,33 +17,42 @@ import java.util.Stack;
  */
 public class MinStack {
 
-    private Stack<Integer> stack1 = new Stack<>();
-    private Stack<Integer> stack2 = new Stack<>();
+    Stack<Integer> stack = new Stack<>();
+    Stack<Integer> minStack = new Stack<>();
 
-    public void push(int x) {
-        stack1.push(x);
-        Integer min = stack2.peek();
-        if (min == null) {
-            stack2.push(x);
+    /**
+     * initialize your data structure here.
+     */
+    public MinStack() {
+
+    }
+
+    public void push(int val) {
+        stack.push(val);
+        if (minStack.isEmpty()) {
+            minStack.push(val);
         }
         else {
-            stack2.push(Math.min(min, x));
+            // peek也会抛异常
+            Integer min = minStack.peek();
+            minStack.push(Math.min(val, min));
         }
     }
 
-    public Integer pop() {
-        int x = stack1.pop();
-        stack2.pop();
-        return x;
+    public void pop() {
+        if (stack.isEmpty()) {
+            return;
+        }
+
+        stack.pop();
+        minStack.pop();
     }
 
-    public Integer top() {
-        return stack1.peek();
+    public int top() {
+        return stack.peek();
     }
 
-    public Integer min() {
-        return stack2.peek();
+    public int getMin() {
+        return minStack.peek();
     }
-
-
 }

@@ -49,6 +49,8 @@ package com.test.algorithm;
  * int rowlimit = n / 2;
  * int columnlimit = rest == 1 ? n / 2 + 1 : n / 2;
  * 找出旋转规律
+ * 【0，0】-》【0，2】-》【2，2】-》【2，0】
+ *  【0，1】 -》 【1，2】-》【2，1】-》【1，0】
  *
  * @author dengxiaolin
  * @since 2020/11/27

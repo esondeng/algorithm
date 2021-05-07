@@ -67,29 +67,19 @@ public class LadderLength {
             int size = queue1.size();
             for (int i = 0; i < size; i++) {
                 String word = queue1.poll();
-                char[] chars = word.toCharArray();
-                for (int j = 0; j < word.length(); ++j) {
-                    // 保存第j位的原始字符
-                    char c0 = chars[j];
-                    for (char c = 'a'; c <= 'z'; ++c) {
-                        chars[j] = c;
-                        String newString = new String(chars);
-                        // 已经访问过了，跳过
-                        if (visited1.contains(newString)) {
+                for (String allword : allWordSet) {
+                    if (diffOneChar(word, allword)) {
+                        if (visited1.contains(allword)) {
                             continue;
                         }
-                        // 两端遍历相遇，结束遍历，返回 count
-                        if (visited2.contains(newString)) {
+
+                        if (visited2.contains(allword)) {
                             return count + 1;
                         }
-                        // 如果单词在列表中存在，将其添加到队列，并标记为已访问
-                        if (allWordSet.contains(newString)) {
-                            queue1.offer(newString);
-                            visited1.add(newString);
-                        }
+
+                        queue1.offer(allword);
+                        visited1.add(allword);
                     }
-                    // 恢复第j位的原始字符
-                    chars[j] = c0;
                 }
             }
         }
