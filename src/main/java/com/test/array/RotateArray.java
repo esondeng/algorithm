@@ -44,31 +44,37 @@ public class RotateArray {
         }
     }
 
+    /**
+     * 思路：需要从后面换k个到前面，从k开始，一直交换
+     * pre = (current - k)%k;
+     * current = (current + k)%n;
+     */
     public static void rotate2(int[] nums, int k) {
-        k = k % nums.length;
-        if (nums.length < 2 || k == 0) {
+        if (nums == null) {
             return;
         }
 
-        for (int i = 0; i < k; i++) {
+        int n = nums.length;
+        k = k % n;
+        if (n < 2 || k == 0) {
+            return;
+        }
+
+        int count = n;
+
+        for (int i = k; count != 0; i++) {
             int current = i;
-            int next = (current + k) % nums.length;
+            int pre = (current - k) % k;
 
-            int currentVal = nums[current];
-            int currentNext = nums[next];
-
-            do {
-                nums[next] = currentVal;
-                currentVal = currentNext;
-
+            while (count-- != 0) {
+                swap(nums, pre, current);
                 System.out.println(Arrays.toString(nums));
+                current = (current + k) % n;
 
-                current = next;
-                next = (current + k) % nums.length;
-
-
-
-            } while (next != i);
+                if (current == i) {
+                    break;
+                }
+            }
         }
     }
 
@@ -81,12 +87,10 @@ public class RotateArray {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[] {1, 2, 3, 4, 5, 6, 7};
+        int[] nums = new int[] {3, -100, -1, 99};
         System.out.println(Arrays.toString(nums));
-        rotate2(nums, 3);
+        rotate2(nums, 2);
         System.out.println(Arrays.toString(nums));
-
-
     }
 
 }
