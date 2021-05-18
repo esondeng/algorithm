@@ -97,8 +97,8 @@ public class LowestCommonAncestor {
     public TreeNode lowestCommonAncestor1(TreeNode root, int p, int q) {
         List<TreeNode> list1 = new ArrayList<>();
         List<TreeNode> list2 = new ArrayList<>();
-        find(root, p, list1);
-        find(root, q, list2);
+        fillPath(root, p, list1);
+        fillPath(root, q, list2);
 
 
         TreeNode preNode = root;
@@ -125,7 +125,7 @@ public class LowestCommonAncestor {
      * @param list
      * @return
      */
-    private boolean find(TreeNode root, int p, List<TreeNode> list) {
+    private boolean fillPath(TreeNode root, int p, List<TreeNode> list) {
         if (root == null) {
             return false;
         }
@@ -135,14 +135,14 @@ public class LowestCommonAncestor {
             return true;
         }
 
-        boolean leftFind = find(root.left, p, list);
+        boolean leftFind = fillPath(root.left, p, list);
 
 
         if (leftFind) {
             return true;
         }
 
-        boolean rightFind = find(root.right, p, list);
+        boolean rightFind = fillPath(root.right, p, list);
         if (rightFind) {
             return true;
         }
