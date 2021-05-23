@@ -39,7 +39,7 @@ public class HalfFind {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[] {4, 5, 1, 2, 3};
-        System.out.println(halfFind(nums, 5));
+        int[] nums = new int[] {6, 1, 2, 3, 4, 5};
+        System.out.println(halfFind(nums, 1));
     }
 }
