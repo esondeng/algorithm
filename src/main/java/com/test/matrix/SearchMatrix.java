@@ -18,7 +18,7 @@ package com.test.matrix;
  * * Given target = 5, return true.
  * * Given target = 20, return false.
  * <p>
- * 思路：行列指针法, 充分利用排序特性
+ * 思路：行列指针法, 充分利用排序特性, 右上角开始遍历
  * i =0， j = m[0].length -1， 这个点才是精髓
  * while(i < m.length && j < m[0].length){
  * if(m[i][j] < p){
