@@ -1,10 +1,11 @@
-package com.test.algorithm;
+package com.test.slide;
 
 import java.util.Arrays;
 
 /**
  * 无重复字符串的最大子串
  * 思路：双指针法，startIndex -> end
+ * 类似滑动窗口，startIndex = 当前字符出现的index
  *
  * @author dengxiaolin
  * @since 2021/04/27

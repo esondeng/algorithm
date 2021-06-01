@@ -25,7 +25,8 @@ public class LargestRectangle {
 
         for (int i = 0; i <= heights.length; i++) {
             int h = (i == heights.length ? 0 : heights[i]);
-            //递增入栈，保证栈内索引对应的Height递增
+
+            // 递增入栈，保证栈内索引对应的Height递增
             if (stack.size() == 0 || h >= heights[stack.peek()]) {
                 stack.push(i);
             }
