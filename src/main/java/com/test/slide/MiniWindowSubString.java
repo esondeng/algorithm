@@ -51,7 +51,7 @@ public class MiniWindowSubString {
                 char leftChar = s.charAt(left);
                 if (map.containsKey(leftChar)) {
                     map.put(leftChar, map.get(leftChar) + 1);
-                    // 说明已经不满足t的字符个数, 遍历到不满足为止。
+                    // 最惨的情况是上一轮都减为0了（满足条件），现在过了一个字符就不满足了。
                     if (map.get(leftChar) > 0) {
                         cnt--;
                     }
@@ -61,5 +61,9 @@ public class MiniWindowSubString {
             }
         }
         return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(miniWindowSubString("AADOBCABA", "AABC"));
     }
 }
