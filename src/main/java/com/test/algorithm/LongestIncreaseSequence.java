@@ -4,6 +4,7 @@ package com.test.algorithm;
  * 数组中的最长递增子序列
  * 思路：动态规划
  * 转移方程：
+ * LIS
  * dp[i] = if(nums[i] > dp[j]) 其中 0 <= j < i, Math.max(dp[i], dp[j] + 1);
  * else (if(dp[i] == 0)){
  * dp[i] = 1;
