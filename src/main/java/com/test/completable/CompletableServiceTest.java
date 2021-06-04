@@ -93,11 +93,7 @@ public class CompletableServiceTest {
             }
         });
 
-        TimeUnit.SECONDS.sleep(20);
-        System.out.println("线程池线程个数:" + executor.getActiveCount());
-
         executor.shutdown();
-
     }
 
 
