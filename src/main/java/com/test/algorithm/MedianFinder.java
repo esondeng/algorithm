@@ -2,7 +2,6 @@ package com.test.algorithm;
 
 import java.util.Collections;
 import java.util.PriorityQueue;
-import java.util.stream.Stream;
 
 /**
  * Find Median from Data Stream
@@ -35,12 +34,5 @@ public class MedianFinder {
 
     public static double findMedian() {
         return maxHeap.size() == minHeap.size() ? (double) (minHeap.peek() + maxHeap.peek()) / 2D : maxHeap.peek();
-    }
-
-    public static void main(String[] args) {
-        Stream.iterate(0, i -> i + 1)
-                .limit(5)
-                .forEach(MedianFinder::addNum);
-        System.out.println(findMedian());
     }
 }
