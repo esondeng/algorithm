@@ -16,7 +16,7 @@ public class Test {
 
     private volatile boolean charPrinted = false;
 
-    private Thread print = new Thread() {
+    private Thread charPrint = new Thread() {
         private char s = 'A';
 
         @Override
@@ -26,7 +26,7 @@ public class Test {
                 try {
                     if (charPrinted) {
                         try {
-                            // 等待自己的条件
+                            // 等待数字打印的条件队列
                             counterCondition.await();
                         }
                         catch (Exception e) {
@@ -56,6 +56,7 @@ public class Test {
                 try {
                     if (!charPrinted) {
                         try {
+                            // 等待字母打印的条件队列
                             charCondition.await();
                         }
                         catch (Exception e) {
@@ -76,7 +77,7 @@ public class Test {
     public static void main(String[] args) {
         Test test = new Test();
         test.counter.start();
-        test.print.start();
+        test.charPrint.start();
 
 
         Stream.iterate(0, t -> t + 1).limit(2).forEach(System.out::println);
