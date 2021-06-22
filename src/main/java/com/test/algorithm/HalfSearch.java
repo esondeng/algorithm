@@ -18,6 +18,8 @@ import java.util.Arrays;
  * *
  * * Input: nums = [5,7,7,8,8,10], target = 6
  * * Output: [-1,-1]
+ * 思路：
+ * 二分查找发的使用
  *
  * @author dengxiaolin
  * @since 2020/11/26
