@@ -32,6 +32,8 @@ public class MiniWindowSubSequence {
             if (s.charAt(i) == t.charAt(j)) {
                 if (++j == t.length()) {
                     int end = i;
+
+                    // 内循环，缩短窗口
                     while (--j >= 0) {
                         while (s.charAt(i--) != t.charAt(j)) {
 
