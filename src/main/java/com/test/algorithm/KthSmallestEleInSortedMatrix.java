@@ -14,6 +14,10 @@ import java.util.PriorityQueue;
  * ],
  * k = 8,
  * return 13.
+ * <p>
+ * 思路：
+ * 1.利用最小堆， 弹出N个，先入堆第一行，再按照列入队
+ * 2.非常规二分法
  *
  * @author dengxiaolin
  * @since 2021/06/23
